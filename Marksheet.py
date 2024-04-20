@@ -1,18 +1,31 @@
-# Take inputs from user
-maths = int(input("Enter marks for Maths out of 100: "))
-english = int(input("Enter marks for English out of 100: "))
-science = int(input("Enter marks for Science out of 100: "))
-hindi = int(input("Enter marks for Hindi out of 100: "))
-computer = int(input("Enter marks for Computer out of 100: "))
-print(maths, english, science, hindi, computer)
+# Write a program to take input of obtained marks (out of 100) in various subjects (at least 5
+# subjects) of a student and calculate its Grand total, total percentage and average.
 
-total = 500
+marksDict = {} # declaring a dictionary to hold the subjects and marks obtained per subject
+grandTotal = 0 # declaring to hold the grand total of marks
 
-totalMarksObtained = maths + english + science + hindi + computer
-print("Total marks obtained: ", totalMarksObtained)
+# Taking inputs from user
+numOfSubjects = int(input("Please enter number of subjects for which you enter marks: "))
 
-percentageObtained = (totalMarksObtained * 100) / total
-print("Percentage: ", percentageObtained)
+if numOfSubjects < 5:
+    numOfSubjects = int(input("Please enter marks for minimum 5 subjects: "))
 
-averageMarksObtained = totalMarksObtained / 5
+fromTotal = numOfSubjects * 100
+
+for i in range(numOfSubjects):
+    key = input(f"Enter subject {i+1} name: ")
+    value = int(input("Enter marks for subject: "))
+    marksDict[key] = value
+    grandTotal = grandTotal + value
+
+print("Marks obtained in subjects: ", marksDict)
+print("Grand Total", grandTotal)
+print("Marks obtained from total of: ", fromTotal)
+
+# Calculating Percentage
+totalPercentage = (grandTotal * 100) / fromTotal
+print("Total Percentage: ", totalPercentage)
+
+# Calculating Average
+averageMarksObtained = grandTotal / numOfSubjects
 print("Average: ", averageMarksObtained)
